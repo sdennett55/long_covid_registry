@@ -1,0 +1,16 @@
+.FormSection {
+  margin: 2em 0;
+}
+.FormSectionTitle,
+.FormSectionSubtitle {
+  display: block;
+}
+.FormSectionTitle {
+  margin-bottom: 1em;
+  font-weight: 700;
+}
+.FormSectionSubtitle {
+  font-style: italic;
+  font-size: .75em;
+  font-weight: normal;
+}

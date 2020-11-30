@@ -1,21 +1,29 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
+import Page from '../components/Page';
+import PageTitle from '../components/PageTitle';
+import BodyText from '../components/BodyText';
 
 export default function Data(props) {
   const [users, setUsers] = useState(null);
   useEffect(async () => {
-    const res = await fetch('http://localhost:3000/api/test');
+    const endpoint = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/api/test' : ''; // @todo: add whatever endpoint vercel provides
+    const res = await fetch(endpoint);
     const users = await res.json();
     console.log('wtfwtfwtfw', users);
     setUsers(users);
   }, [])
   return (
     <>
-      <h1>Whatup?</h1>
-      {users && (
-        <>
-          {JSON.stringify(users)}
-        </>
-      )}
+      <Page headTitle="Long COVID Registry | Data">
+        <PageTitle>
+          Long COVID Survey Data {process.env.NODE_ENV}
+        </PageTitle>
+        {users && (
+          <>
+            {JSON.stringify(users)}
+          </>
+        )}
+      </Page>
     </>
   )
 }

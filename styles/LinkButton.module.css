@@ -1,0 +1,27 @@
+.LinkButton,
+.LinkButtonBlack {
+  background-color: rgb(221, 1, 1);
+  appearance: none;
+  margin: .5em;
+  padding: .5em .75em;
+  border: 0;
+  border-radius: 8px;
+  font-size: 1em;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color .25s;
+  text-decoration: none;
+  font-weight: 700;
+}
+.LinkButton:hover,
+.LinkButton:focus {
+  background-color: rgb(180, 0, 0);
+}
+
+.LinkButtonBlack {
+  background-color: #000;
+}
+.LinkButtonBlack:hover,
+.LinkButtonBlack:focus {
+  background-color: rgb(53, 53, 53);
+}
