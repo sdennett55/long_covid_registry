@@ -43,8 +43,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <footer class={styles.footer}>
-        <p class={styles.footerText}>The data collected in the survey is anonymously sourced and unverified. Personal contact information is submitted optionally and available to interested educational or government agencies.</p>
+      <footer className={styles.footer}>
+        <p className={styles.footerText}>The data collected in the survey is anonymously sourced and unverified. Personal contact information is submitted optionally and available to interested educational or government agencies.</p>
       </footer>
     </>
   )
