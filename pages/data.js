@@ -6,7 +6,7 @@ import BodyText from '../components/BodyText';
 export default function Data(props) {
   const [users, setUsers] = useState(null);
   useEffect(async () => {
-    const endpoint = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/api/test' : 'long-covid-registry.vercel.app/api/test'; // @todo: add whatever endpoint vercel provides
+    const endpoint = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/api/test' : '/api/test'; // @todo: add whatever endpoint vercel provides
     const res = await fetch(endpoint);
     const users = await res.json();
     setUsers(users);
