@@ -9,14 +9,6 @@ const Page = ({ children, headTitle }) => {
       <link rel="preconnect"
         href="https://fonts.gstatic.com"
         crossOrigin="true" />
-
-      <link rel="preload"
-        as="style"
-        href="$CSS&display=swap" />
-
-      <link rel="stylesheet"
-        href="$CSS&display=swap"
-        media="print" onLoad="this.media='all'" />
       <Head>
         <title>{headTitle}</title>
         <link rel="icon" href="/favicon.ico" />
