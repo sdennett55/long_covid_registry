@@ -15,7 +15,7 @@ export default function Data(props) {
     <>
       <Page headTitle="Long COVID Registry | Data">
         <PageTitle>
-          Long COVID Survey Data {process.env.NODE_ENV}
+          Long COVID Survey Data
         </PageTitle>
         {users && (
           <>
