@@ -41,8 +41,10 @@ export default function Survey() {
 
     setIsLoading(true);
 
-    // Send state to endpoint that saves User to database.
-    axios.post('/api/addUser', state).then(res => {
+    const newState = {...state, dateModified: new Date().toISOString().split('T')[0]}
+
+    // Send newState to endpoint that saves User to database.
+    axios.post('/api/addUser', newState).then(res => {
       setIsLoading(false);
       if (res.status === 200 && res.data) {
         setError('');
@@ -75,7 +77,7 @@ export default function Survey() {
                 <input type="date" required name="dob" onChange={updateState} max={new Date().toISOString().split("T")[0]} />
               </FormSection>
               <FormSection title="When did your symptoms first start?">
-                <input type="date" name="startDate" required onChange={updateState} />
+                <input type="date" name="startDate" required onChange={updateState} max={new Date().toISOString().split("T")[0]} />
               </FormSection>
               <FormSection title="How many weeks until your symptoms subsided?" subtitle="Leave it at zero if you still have symptoms">
                 <input type="number" min="0" name="weeksLasted" required onChange={updateState} value={state.weeksLasted} />

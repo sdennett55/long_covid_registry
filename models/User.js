@@ -44,6 +44,10 @@ const UserSchema = new mongoose.Schema({
   public: {
     type: Boolean,
     default: false,
+  },
+  dateModified: {
+    type: String,
+    required: true,
   }
 });
 
@@ -65,9 +69,9 @@ async function createUser(state) {
 
 async function getUserInfo() {
   try {
-    const userInfo = await User.find({}).select({ preexistingConditions: 1, dob: 1, startDate: 1, weeksLasted: 1, sex: 1, bloodType: 1, location: 1, vitamins: 1, symptoms: 1 });
-    const userInfoWithAge = userInfo.map(({ preexistingConditions, dob, startDate, weeksLasted, sex, bloodType, location, vitamins, symptoms }) => {
-      const age = Math.floor((new Date().getTime() - new Date(dob).getTime()) / (1000 * 60 * 60 * 24 * 365));
+    const userInfo = await User.find({}).select({ preexistingConditions: 1, dob: 1, startDate: 1, weeksLasted: 1, sex: 1, bloodType: 1, location: 1, vitamins: 1, symptoms: 1, dateModified: 1 });
+    const userInfoWithAge = userInfo.map(({ preexistingConditions, dob, startDate, weeksLasted, sex, bloodType, location, vitamins, symptoms, dateModified }) => {
+      const age = Math.floor((new Date(dateModified).getTime() - new Date(dob).getTime()) / (1000 * 60 * 60 * 24 * 365));
       return { preexistingConditions, dob, startDate, weeksLasted, sex, bloodType, location, vitamins, symptoms, age };
     }).reverse();
     return userInfoWithAge;
