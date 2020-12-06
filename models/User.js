@@ -41,6 +41,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  public: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 // User Class
