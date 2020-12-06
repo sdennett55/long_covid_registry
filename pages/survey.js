@@ -41,7 +41,7 @@ export default function Survey() {
 
     setIsLoading(true);
 
-    // send state to endpoint that saves User to database.
+    // Send state to endpoint that saves User to database.
     axios.post('/api/addUser', state).then(res => {
       setIsLoading(false);
       if (res.status === 200 && res.data) {
