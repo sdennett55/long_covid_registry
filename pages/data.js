@@ -107,11 +107,13 @@ export default function Data(props) {
                   <td>{location}</td>
                   <td className="Table-vitamins">{vitamins}</td>
                   <td className="Table-preexistingConditions">
-                    <ul>
-                      {preexistingConditions.map(condition => (
-                        <li>{condition}</li>
-                      ))}
-                    </ul>
+                    {preexistingConditions?.length > 0 && preexistingConditions[0] ? (
+                      <ul>
+                        {preexistingConditions.map(condition => (
+                          <li>{condition}</li>
+                        ))}
+                      </ul>
+                    ) : 'None'}
                   </td>
                   <td className="Table-symptoms">{symptoms}</td>
                 </tr>
