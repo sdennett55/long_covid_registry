@@ -121,8 +121,11 @@ export default function Data(props) {
           {!users && (
             <LoadingIcon />
           )}
+          {users && users.length < 1 && (
+            <p style={{ textAlign: 'center' }}>No data available at this time.</p>
+          )}
           {error && (
-            <p style={{ color: 'red' }}>{error}</p>
+            <p style={{ textAlign: 'center', color: 'red' }}>{error}</p>
           )}
         </div>
       </Page>
