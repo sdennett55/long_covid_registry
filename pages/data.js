@@ -5,6 +5,7 @@ import axios from 'axios';
 
 export default function Data(props) {
   const [users, setUsers] = useState(null);
+  const [error, setError] = useState('');
   useEffect(async () => {
     const endpoint = '/api/getPublicInfo'; // @todo: add whatever endpoint vercel provides
     axios.post(endpoint).then(res => {
