@@ -1,0 +1,6 @@
+.TextArea {
+  line-height: 1.5;
+  width: 100%;
+  min-height: 150px;
+  resize: none;
+}

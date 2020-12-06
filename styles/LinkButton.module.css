@@ -25,3 +25,6 @@
 .LinkButtonBlack:focus {
   background-color: rgb(53, 53, 53);
 }
+.LinkButton:disabled {
+  opacity: .5;
+}
