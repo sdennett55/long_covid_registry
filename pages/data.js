@@ -101,7 +101,7 @@ export default function Data(props) {
                 <tr>
                   <td>{age}</td>
                   <td>{new Date(startDate).toLocaleDateString()}</td>
-                  <td>{weeksLasted}</td>
+                  <td>{weeksLasted || 'Ongoing'}</td>
                   <td>{sex}</td>
                   <td className="Table-bloodType">{bloodType}</td>
                   <td>{location}</td>
