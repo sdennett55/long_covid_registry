@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Page from '../components/Page';
 import PageTitle from '../components/PageTitle';
 import axios from 'axios';
+import LoadingIcon from '../components/LoadingIcon';
 
 export default function Data(props) {
   const [users, setUsers] = useState(null);
@@ -81,45 +82,48 @@ export default function Data(props) {
           Long COVID Survey Data
         </PageTitle>
         <div className="Table">
-        <table>
-          <thead>
-            <tr>
-              <td>Age</td>
-              <td>Start Date</td>
-              <td>Weeks Lasted</td>
-              <td>Sex</td>
-              <td>Blood Type</td>
-              <td>Location</td>
-              <td>Vitamin C/D</td>
-              <td>Preexisting Conditions</td>
-              <td>Symptoms</td>
-            </tr>
-          </thead>
-          <tbody>
-            {users && users.map(({ preexistingConditions, age, startDate, weeksLasted, sex, bloodType, location, vitamins, symptoms }) => (
+          <table>
+            <thead>
               <tr>
-                <td>{age}</td>
-                <td>{new Date(startDate).toLocaleDateString()}</td>
-                <td>{weeksLasted}</td>
-                <td>{sex}</td>
-                <td className="Table-bloodType">{bloodType}</td>
-                <td>{location}</td>
-                <td className="Table-vitamins">{vitamins}</td>
-                <td className="Table-preexistingConditions">
-                  <ul>
-                  {preexistingConditions.map(condition => (
-                    <li>{condition}</li>
-                  ))}
-                  </ul>
-                </td>
-                <td className="Table-symptoms">{symptoms}</td>
+                <td>Age</td>
+                <td>Start Date</td>
+                <td>Weeks Lasted</td>
+                <td>Sex</td>
+                <td>Blood Type</td>
+                <td>Location</td>
+                <td>Vitamin C/D</td>
+                <td>Preexisting Conditions</td>
+                <td>Symptoms</td>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        {error && (
-          <p style={{color: 'red'}}>{error}</p>
-        )}
+            </thead>
+            <tbody>
+              {users && users.map(({ preexistingConditions, age, startDate, weeksLasted, sex, bloodType, location, vitamins, symptoms }) => (
+                <tr>
+                  <td>{age}</td>
+                  <td>{new Date(startDate).toLocaleDateString()}</td>
+                  <td>{weeksLasted}</td>
+                  <td>{sex}</td>
+                  <td className="Table-bloodType">{bloodType}</td>
+                  <td>{location}</td>
+                  <td className="Table-vitamins">{vitamins}</td>
+                  <td className="Table-preexistingConditions">
+                    <ul>
+                      {preexistingConditions.map(condition => (
+                        <li>{condition}</li>
+                      ))}
+                    </ul>
+                  </td>
+                  <td className="Table-symptoms">{symptoms}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {!users && (
+            <LoadingIcon />
+          )}
+          {error && (
+            <p style={{ color: 'red' }}>{error}</p>
+          )}
         </div>
       </Page>
     </>
