@@ -44,7 +44,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 // User Class
-const User = mongoose.models.User || mongoose.model('User', UserSchema);
+const User = mongoose?.models?.User || mongoose.model('User', UserSchema);
 
 // Create a new User
 async function createUser(state) {

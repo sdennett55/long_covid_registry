@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import GoogleFonts from 'next-google-fonts';
+import InlineLink from '../components/InlineLink';
 import styles from '../styles/Page.module.css'
 
 const Page = ({ children, headTitle }) => {
@@ -26,7 +27,7 @@ const Page = ({ children, headTitle }) => {
         </div>
       </div>
       <footer className={styles.footer}>
-        <p className={styles.footerText}>The data collected in the survey is anonymously sourced and unverified. Personal contact information is submitted optionally and available to interested educational or government agencies.</p>
+        <p className={styles.footerText}>The data collected in the survey is anonymously sourced and unverified. Personal contact information (email) is available to interested educational or government agencies. <InlineLink mailto="longcovidregistry@gmail.com">Contact us</InlineLink> if you ever want your email removed from the database.</p>
       </footer>
     </>
   );
