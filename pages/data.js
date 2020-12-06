@@ -44,7 +44,7 @@ export default function Data(props) {
             min-width: 200px;
           }
           .Table-bloodType {
-            min-width: 110px;
+            min-width: 125px;
           }
           .Table-vitamins {
             min-width: 130px;
