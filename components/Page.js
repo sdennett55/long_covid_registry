@@ -1,15 +1,17 @@
-import Head from 'next/head'
-import GoogleFonts from 'next-google-fonts';
-import InlineLink from '../components/InlineLink';
-import styles from '../styles/Page.module.css'
+import Head from "next/head";
+import GoogleFonts from "next-google-fonts";
+import InlineLink from "../components/InlineLink";
+import styles from "../styles/Page.module.css";
 
 const Page = ({ children, headTitle }) => {
   return (
     <>
       <GoogleFonts href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" />
-      <link rel="preconnect"
+      <link
+        rel="preconnect"
         href="https://fonts.gstatic.com"
-        crossOrigin="true" />
+        crossOrigin="true"
+      />
       <Head>
         <title>{headTitle}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -22,15 +24,21 @@ const Page = ({ children, headTitle }) => {
             <span className={styles.registryText}>Registry</span>
           </a>
         </header>
-        <div className={styles.container}>
-          {children}
-        </div>
+        <div className={styles.container}>{children}</div>
       </div>
       <footer className={styles.footer}>
-        <p className={styles.footerText}>The data collected in the survey is anonymously sourced and unverified. Personal contact information (email) is available to interested educational or government agencies. <InlineLink mailto="longcovidregistry@gmail.com">Contact us</InlineLink> if you ever want your email removed from the database.</p>
+        <p className={styles.footerText}>
+          The data collected in the survey is anonymously sourced and
+          unverified. Personal contact information (email) is available to
+          interested educational or government agencies.{" "}
+          <InlineLink href="mailto:longcovidregistry@gmail.com">
+            Contact us
+          </InlineLink>{" "}
+          if you want your email removed from the database.
+        </p>
       </footer>
     </>
   );
-}
+};
 
 export default Page;
