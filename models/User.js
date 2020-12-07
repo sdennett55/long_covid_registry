@@ -72,7 +72,7 @@ async function getUserInfo() {
     const userInfo = await User.find({}).select({ preexistingConditions: 1, dob: 1, startDate: 1, weeksLasted: 1, sex: 1, bloodType: 1, location: 1, vitamins: 1, symptoms: 1, dateModified: 1 });
     const userInfoWithAge = userInfo.map(({ preexistingConditions, dob, startDate, weeksLasted, sex, bloodType, location, vitamins, symptoms, dateModified }) => {
       const age = Math.floor((new Date(dateModified).getTime() - new Date(dob).getTime()) / (1000 * 60 * 60 * 24 * 365));
-      return { preexistingConditions, dob, startDate, weeksLasted, sex, bloodType, location, vitamins, symptoms, age };
+      return { preexistingConditions, dob, startDate, weeksLasted, sex, bloodType, location, vitamins, symptoms, age, dateModified };
     }).reverse();
     return userInfoWithAge;
   } catch (err) {

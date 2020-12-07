@@ -4,11 +4,16 @@ import PageTitle from '../components/PageTitle';
 import axios from 'axios';
 import LoadingIcon from '../components/LoadingIcon';
 
+function getWeeksLasted({dateModified, startDate}) {
+  const weeksLeft = Math.round((new Date(dateModified).getTime() - new Date(startDate).getTime()) / (1000 * 60 * 60 * 24 * 7));
+  return `${weeksLeft} (ongoing)`;
+}
+
 export default function Data(props) {
   const [users, setUsers] = useState(null);
   const [error, setError] = useState('');
   useEffect(async () => {
-    const endpoint = '/api/getPublicInfo'; // @todo: add whatever endpoint vercel provides
+    const endpoint = '/api/getPublicInfo';
     axios.post(endpoint).then(res => {
       if (res.status === 200 && res.data) {
         setError('');
@@ -46,7 +51,8 @@ export default function Data(props) {
           .Table-bloodType {
             min-width: 125px;
           }
-          .Table-vitamins {
+          .Table-vitamins,
+          .Table-weeksLasted {
             min-width: 130px;
           }
           thead td {
@@ -97,11 +103,11 @@ export default function Data(props) {
               </tr>
             </thead>
             <tbody>
-              {users && users.map(({ preexistingConditions, age, startDate, weeksLasted, sex, bloodType, location, vitamins, symptoms }) => (
+              {users && users.map(({ preexistingConditions, age, startDate, weeksLasted, sex, bloodType, location, vitamins, symptoms, dateModified }) => (
                 <tr>
                   <td>{age}</td>
                   <td>{new Date(startDate).toLocaleDateString()}</td>
-                  <td>{weeksLasted || 'Ongoing'}</td>
+                  <td className="Table-weeksLasted">{weeksLasted || getWeeksLasted({dateModified, startDate})}</td>
                   <td>{sex}</td>
                   <td className="Table-bloodType">{bloodType}</td>
                   <td>{location}</td>
