@@ -44,6 +44,7 @@ export default function Data(props) {
           }
           .Table-symptoms {
             min-width: 320px;
+            white-space: pre-line;
           }
           .Table-preexistingConditions {
             min-width: 200px;
